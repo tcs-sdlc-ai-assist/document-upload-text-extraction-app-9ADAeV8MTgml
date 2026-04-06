@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-neutral-50 text-neutral-900 font-sans min-h-screen;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Focus outline for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-400;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.neutral.300') theme('colors.neutral.100');
+  }
+
+  /* Dark mode body */
+  .dark body {
+    @apply bg-neutral-900 text-neutral-100;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-neutral-800;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-600;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-500;
+  }
+
+  .dark * {
+    scrollbar-color: theme('colors.neutral.600') theme('colors.neutral.800');
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-600 text-white font-medium
+      transition-colors duration-200 hover:bg-primary-700 focus:outline-none focus-visible:outline-2
+      focus-visible:outline-offset-2 focus-visible:outline-primary-500 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg bg-secondary-600 text-white font-medium
+      transition-colors duration-200 hover:bg-secondary-700 focus:outline-none focus-visible:outline-2
+      focus-visible:outline-offset-2 focus-visible:outline-secondary-500 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg border border-neutral-300 text-neutral-700
+      font-medium transition-colors duration-200 hover:bg-neutral-100 focus:outline-none focus-visible:outline-2
+      focus-visible:outline-offset-2 focus-visible:outline-primary-500 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-card p-6 transition-shadow duration-200 hover:shadow-soft;
+  }
+
+  .dark .card {
+    @apply bg-neutral-800 border border-neutral-700;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 rounded-lg border border-neutral-300 bg-white text-neutral-900
+      placeholder-neutral-400 transition-colors duration-200
+      focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+      disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .dark .input-field {
+    @apply bg-neutral-800 border-neutral-600 text-neutral-100 placeholder-neutral-500;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
